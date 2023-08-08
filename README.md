@@ -1,24 +1,95 @@
-<h1>Git/GitHub</h1>
+# Git/GitHub
 
-<h2>Git이란</h2>
-Git : Version Control Systems
+---
+
+## 단어의 의미
+
+Git : Version Control Systems. 단순히 버전을 관리해주는 소프트웨어
+
+GitHub : 분산 버전 컨트롤 소프트웨어 깃을 기반으로 소스 코드를 호스팅 하고, 협업 지원 기능들을 지원하는 마이크로소프트의 웹서비스. 즉, _드라이브_ 같은 **원격 저장소**
+
+repository : 커밋이 완료된 파일들의 **저장소**
+
+commit : 특정 단위의 작업이 완결된 상태. 즉, **버전**
+
+stage area : add 명령어에 의한 파일들이 commit 대기 상태에 있는 공간.
+
+fast-forward : merge 할 때 현재 branch가 merge 하려는 branch보다 뒤쳐졌을 때 발생.
+현재 branch의 버전이 merge하려는 branch의 commit을 가리키며, commit을 생성하지 않음.
+
+recursive strategy : 현재 branch에 변경사항이 적용되어 merge하려는 branch와 다를 때 발생.
+공통 조상을 이용하여 두 branch를 합치고 별도의 commit을 만듬.
+
+HEAD : 가장 최근 커밋을 가리킴.
+
+branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
+
+<img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" width=650px>
+
+**master** branch는 현재 commit을 3번 한 상태(C0, C1, C2)
+
+<img src="https://git-scm.com/book/en/v2/images/basic-branching-2.png" width=650px>
+
+*iss53*이 발생하여 **iss53** branch를 C2 commit에서 생성함
+
+<img src="https://git-scm.com/book/en/v2/images/basic-branching-3.png" width=650px>
+
+_iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 일단 commit함(C3)
+
+<img src="https://git-scm.com/book/en/v2/images/basic-branching-4.png" width=650px>
+
+**hotfix** branch를 만들고 해결 후 commit함(C4) 이후 **master** 를 **hotfix** 로 merge 할 때 "fast-forward" 발생.
+
+<img src="https://git-scm.com/book/en/v2/images/basic-branching-5.png" width=650px>
+
+즉, commit message 없이 **hotfix**가 **master**에 포함됨.
+
+<img src="https://git-scm.com/book/en/v2/images/basic-branching-6.png" width=650px>
+
+기존에 작업중이던 **iss53** 에서 _iss53_ 해결 후 commit(C5).
+
+<img src="https://git-scm.com/book/en/v2/images/basic-merging-1.png" width=650px>
+
+현재 **master**(C4)는 _hotfix_ 적용되었지만 **iss53** 은 적용되지 않았기에 "recursive strategy" 발생.
+
+<img src="https://git-scm.com/book/en/v2/images/basic-merging-2.png" width = 650px>
+
+공통 조상(C2) commit을 이용하여 3-way Merge 실행.
+즉, **master** 에 'C4와 C5를 부모로 가진다'는 내용의 commit(C6)이 자동으로 생성됨.
+
+---
 
 ## Git 명령어
 
-git init : 디렉토리를 깃 리포지토리로 초기화 시키는 명령어
+- `git init` : 디렉토리를 깃 리포지토리로 초기화 시키는 명령어
 
-git add : 버전 관리를 위해 파일을 추가하는 행위
-현재 경로의 모든 파일을 추가할 때 `git add .`
-특정 파일을 지정할 수도 있다. `git add f1.txt`
+- git add : 버전 관리를 위해 파일을 추가하는 행위
 
-git commit : add로 추가한 파일의 버전을 지정.
-git commit -m : commit message까지 작성하는 명령어
+  - 현재 경로의 모든 파일을 추가할 때.
 
-git commit -am "message" : 한 번 add 했던 파일들은 -am명령어로 add와 commit 한번에 가능
+  ```
+  git add .
+  ```
 
-```
-git commit -m "message"
-```
+  - 특정 파일을 지정할 수도 있다.
+
+  ```
+  git add f1.txt
+  ```
+
+- git commit : add로 추가한 파일의 버전을 지정.
+
+  - commit message까지 작성하는 명령어
+
+  ```
+  git commit -m "first commit"
+  ```
+
+  - 한 번 add 했던 파일들은 `-am` 명령어로 add와 commit 한번에 가능
+
+  ```
+  git commit -am "commit message"
+  ```
 
 git log : 버전의 변경 이력들을 출력
 git log --branches --decorate : branch 포함한 변경 이력 보여줌
@@ -111,24 +182,9 @@ git tag -d 1.1.0 : 1.1.0 tag 삭제
 
 ---
 
-stage area : add 명령어로 파일들이 commit 대기 상태에 있는 공간
-리포지토리 : 커밋이 완료된 파일들의 저장소
-버전 : 특정 단위의 작업이 완결된 상태
-
----
-
 커밋은 되도록 하나의 작업이 완료되었을 때 작성
 
 sourcetree
-
-fast-forward : merge 할 때 현재 branch가 merge 하려는 branch보다 뒤쳐졌을 때
-현재 branch의 버전이 merge하려는 branch의 version(commit)을 가리키며, commit을 생성하지 않음.
-recursive strategy : 현재 branch에 변경사항이 적용되어 merge하려는 branch와 다를 때
-공통 조상을 이용하여 두 branch를 합치고 별도의 commit을 만듬
-
-HEAD : 가장 최근 커밋을 가리킴
-
-branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용
 
 git init
 git add .
