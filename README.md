@@ -91,8 +91,28 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
   git commit -am "commit message"
   ```
 
-git log : 버전의 변경 이력들을 출력
-git log --branches --decorate : branch 포함한 변경 이력 보여줌
+- `git log` : 버전의 변경 이력들을 출력
+
+  ```git
+  commit 700afaa0b9c2c4d9ff9869341f55c7037bf44f81 (HEAD -> master)
+  Author: SungchulCha <tony4907813@gmail.com>
+  Date:   Tue Aug 8 23:19:38 2023 +0900
+
+    git log 예시를 위해 commit 함
+
+  commit ebee42094bd370662d9752e060cba14a64846b3e (origin/master)
+  Author: SungchulCha <tony4907813@gmail.com>
+  Date:   Tue Aug 8 22:35:34 2023 +0900
+
+    내용 작성 완료. ToDo: 내용 순서들 정리.
+  ```
+
+- `git log --branches --decorate` : branch 포함한 변경 이력 보여줌
+
+```
+
+```
+
 git log --branches --decorate --graph
 git log --branches --decorate --grpah --oneline
 
@@ -103,7 +123,9 @@ git log에서 commit 옆에 있는 문자열은 해당 commit의 아이디
 git diff : 특정 commit 사이의 차이점 보여줌
 
 ```
+
 git diff ~~~..~~~
+
 ```
 
 git log master..name : branch 사이의 차이를 보여줌
@@ -207,3 +229,7 @@ git pull
 충돌시 merge conflict 확인
 작업
 git push
+
+```
+
+```
