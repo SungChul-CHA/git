@@ -70,7 +70,7 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 - git config --global user.email : commit 같이 저장 될 사람(나)의 메일 주소 지정
 
   ```git
-  git config --global user.email "sungchulcha13@gmail.com
+  git config --global user.email "sungchulcha13@gmail.com"
   ```
 
 - `git config --list` : 위에서 지정한 정보들 확인
