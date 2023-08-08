@@ -1,0 +1,10 @@
+Repository 전략
+Upstream : 서비스 리포지토리
+Origin : 개인 리포지토리
+
+Branch 전략
+main : 현재 서비스중인 브랜치
+develop : 다음 버전 개발 브랜치
+feature : 기능 개발 브랜치
+release : 이번 출시 할 버전 브랜치
+hotfix : 버그 수정 브랜치
