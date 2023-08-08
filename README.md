@@ -61,19 +61,33 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
 ## Git 명령어
 
-- `git init` : 디렉토리를 깃 리포지토리로 초기화 시키는 명령어
+- git config --global user.name : commit에 같이 저장 될 사람(나)의 이름 지정
 
+  ```git
+  git config --global user.name "SungChul CHA"
+  ```
+
+- git config --global user.email : commit 같이 저장 될 사람(나)의 메일 주소 지정
+
+  ```git
+  git config --global user.email "sungchulcha13@gmail.com
+  ```
+
+- `git config --list` : 위에서 지정한 정보들 확인
+  <br>
+- `git init` : 디렉토리를 깃 리포지토리로 초기화 시키는 명령어
+  <br>
 - git add : 버전 관리를 위해 파일을 추가하는 행위
 
   - 현재 경로의 모든 파일을 추가할 때.
 
-  ```
+  ```git
   git add .
   ```
 
   - 특정 파일을 지정할 수도 있다.
 
-  ```
+  ```git
   git add f1.txt
   ```
 
@@ -81,15 +95,18 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
   - commit message까지 작성하는 명령어
 
-  ```
+  ```git
   git commit -m "first commit"
   ```
 
   - 한 번 add 했던 파일들은 `-am` 명령어로 add와 commit 한번에 가능
 
-  ```
+  ```git
   git commit -am "commit message"
   ```
+
+- `git status` : 현재 git의 상태를 확인하는 명령어. add 안된 파일 혹은 commit 안된 파일을 알 수 있다.
+  <br>
 
 - `git log` : 버전의 변경 이력들을 출력
 
@@ -108,42 +125,94 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
   ```
 
 - `git log --branches --decorate` : branch 포함한 변경 이력 보여줌
+  `git log --branches --decorate --grpah --oneline`
+  `git log --branches --decorate --graph`
 
-```
+  ```git
+  * commit f69039b61febadb8a0592f4d9869027b9d22815a (HEAD -> master, origin/master)
+  | Author: SungchulCha <tony4907813@gmail.com>
+  | Date:   Tue Aug 8 23:23:03 2023 +0900
+  |
+  |     git log --branches 예시용 commig.
+  |
+  * commit 700afaa0b9c2c4d9ff9869341f55c7037bf44f81
+  | Author: SungchulCha <tony4907813@gmail.com>
+  | Date:   Tue Aug 8 23:19:38 2023 +0900
+  |
+  |     git log 예시를 위해 commit 함
+  |
+  * commit ebee42094bd370662d9752e060cba14a64846b3e
+    Author: SungchulCha <tony4907813@gmail.com>
+    Date:   Tue Aug 8 22:35:34 2023 +0900
 
-```
+      내용 작성 완료. ToDo: 내용 순서들 정리.
+  ```
 
-git log --branches --decorate --graph
-git log --branches --decorate --grpah --oneline
+- `git log -p` : 커밋 사이의 변경점 확인 가능
 
-git log -p : 커밋 사이의 변경점 확인 가능
+  ````
+  commit f69039b61febadb8a0592f4d9869027b9d22815a (HEAD -> master, origin/master)
+  Author: SungchulCha <tony4907813@gmail.com>
+  Date:   Tue Aug 8 23:23:03 2023 +0900
 
-git log에서 commit 옆에 있는 문자열은 해당 commit의 아이디
+    git log --branches 예시용 commig.
 
-git diff : 특정 commit 사이의 차이점 보여줌
+  diff --git a/README.md b/README.md
+  index 5669938..02b73c2 100644
+  --- a/README.md
+  +++ b/README.md
+  @@ -91,8 +91,28 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여
+   git commit -am "commit message"
+    ```
 
-```
+  -git log : 버전의 변경 이력들을 출력
+  -git log --branches --decorate : branch 포함한 변경 이력 보여줌
+  +- `git log` : 버전의 변경 이력들을 출력
+  +
+  +  ```git
+  +  commit 700afaa0b9c2c4d9ff9869341f55c7037bf44f81 (HEAD -> master)
+  +  Author: SungchulCha <tony4907813@gmail.com>
+  +  Date:   Tue Aug 8 23:19:38 2023 +0900
+  ````
 
-git diff ~~~..~~~
+  > git log에서 commit 옆에 있는 문자열은 해당 commit의 id
 
-```
+- git diff id..id : 특정 commit 사이의 차이점 보여줌
+
+  ```
+  git diff f69039b61febadb8a0592f4d9869027b9d22815a..ebee42094bd370662d9752e060cba14a64846b3e
+  diff --git a/README.md b/README.md
+  index 02b73c2..75719ca 100644
+  --- a/README.md
+  +++ b/README.md
+  @@ -1,118 +1,27 @@
+  -# Git/GitHub
+  +<h1>Git/GitHub</h1>
+
+  ----
+  -
+  -## 단어의 의미
+  -
+  -Git : Version Control Systems. 단순히 버전을 관리해주는 소프트웨어
+  -
+  -GitHub : 분산 버전 컨트롤 소프트웨어 깃을 기반으로 소스 코드를 호스팅 하고, 협
+  업 지원 기능들을 지원하는 마이크로소프트의 웹서비스. 즉, _드라이브_ 같은 **원격 저장소**
+  -
+  -repository : 커밋이 완료된 파일들의 **저장소**
+  -
+  -commit : 특정 단위의 작업이 완결된 상태. 즉, **버전**
+  -
+  -stage area : add 명령어에 의한 파일들이 commit 대기 상태에 있는 공간.
+
+  ```
 
 git log master..name : branch 사이의 차이를 보여줌
 git diff master..name : branch 사이의 현재 차이점을 보여줌
-
-git status : 현재 git의 상태를 확인하는 명령어
-add 안된 파일 혹은 commit 안된 파일을 알 수 있다.
 
 git reset ID --hard : 해당 commit으로 돌아감. (복구 가능) !원격 저장소에서 reset은 절대 하면 안됨!
 --hard : 강제적으로 리셋
 
 git revert : 해당 commit으로 새로운 버전을 만들어냄
-
-git config --global user.name : commit 한 이(나)의 이름 지정
-
-git config --global user.email : commit 한 이(나)의 메일 주소 지정
-
-git config --list : 위에서 지정한 정보들 확인
 
 git config --global core.autocrlf true : \r\n 설정 편하게 하는거.
 
@@ -204,32 +273,44 @@ git tag -d 1.1.0 : 1.1.0 tag 삭제
 
 ---
 
-커밋은 되도록 하나의 작업이 완료되었을 때 작성
+## Git과 GitHub 사용 과정
+
+**(팀장)**
+
+> git init
+> git add .
+> git commit -m "commit message"
+> git remote add origin https://github.com/SungChul-CHA/git.git
+> git push -u origin main
+
+_(사원)_
+
+> git clone https://github.com/SungChul-CHA/git.git Floder_Name
+> git checkout -b Branch_Name
+> (작업)
+> git add .
+> git commit -m "commit message"
+> git push origin Branch_Name
+> (깃헙에서)PR 작성
+
+**(팀장)**
+
+> (깃헙에서)PR 확인 후 merge
+> 충돌시 <a href="#단어의-의미">merge conflict 확인</a>
+> git add .
+> git commit -m "commit message"
+> git pull
+> 충돌시 <a href="#단어의-의미">merge conflict 확인</a>
+> (작업)
+> git push
+
+---
+
+**커밋은 되도록 하나의 작업이 완료되면 작성**
+
+**pull, push 항상 합시다!**
+[![조코딩 Youtube](http://img.youtube.com/vi/h2MqgqDMvLI/0.jpg)](https://www.youtube.com/shorts/h2MqgqDMvLI)
 
 sourcetree
 
-git init
-git add .
-git commit -m "message"
-git remote add origin 깃헙주소
-git push -u origin main
-
-git clone 깃헙주소 폴더이름
-git checkout -b 브랜치이름
-작업
-git add .
-git commit -m "커밋메세지"
-git push origin 브랜치이름
-(깃헙에서)PR 작성
-
-(깃헙에서)PR 확인 후 merge
-git add .
-git commit -m "commit message"
-git pull
-충돌시 merge conflict 확인
-작업
-git push
-
-```
-
-```
+---
