@@ -2,6 +2,18 @@
 
 ---
 
+## index
+
+##### 1. [용어 정리](#단어의-의미)
+
+##### 2. [branch conflict](#branch-충돌--같은-부분을-수정-후-merge하면-conflict-발생-사용자가-직접-처리-또는-mergetool-사용)
+
+##### 3. [사용하는 명령어](#git-명령어)
+
+##### 4. [Git 흐름](#git과-github-사용-과정)
+
+---
+
 ## 단어의 의미
 
 Git : Version Control Systems. 단순히 버전을 관리해주는 소프트웨어
@@ -22,7 +34,7 @@ recursive strategy : 현재 branch에 변경사항이 적용되어 merge하려�
 
 HEAD : 가장 최근 커밋을 가리킴.
 
-branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
+###### branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
 
 <img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" width=650px>
 
@@ -107,6 +119,43 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
 - `git status` : 현재 git의 상태를 확인하는 명령어. add 안된 파일 혹은 commit 안된 파일을 알 수 있다.
   <br>
+
+- git remote add origin 저장소경로 : 원격 저장소를 현재 디렉토리에 연결. 저장소 경로를 origin이란 단어로 대체. 다른 단어도 됨.
+
+  ```git
+  git remote add origin https://github.com/SungChul-CHA/git.git
+  ```
+
+- `git remote -v` : 현재 repository에 연결된 원격 저장소들을 보여줌
+
+- `git remote remove origin` : _origin_ 이란 이름의 원격 저장소 연결 삭제
+
+- `git push` : remote repository로 commit을 동기화함.(업로드)
+
+- `git push -u origin master` : local repository의 master branch를 origin repository의 master branch로 push하겠다.(한번만 하면 됨)
+
+- git clone 주소 . : 현재 directory를 git repository로 설정하고 주소의 원격 저장소랑 연결한다.(git init 굳이 먼저 안해도됨)
+
+  ```
+  git clone https://github.com/SungChul-CHA/git.git .
+  ```
+
+- `git pull` : 지역 저장소를 연결된 원격 저장소의 최신 commit으로 업데이트함.
+
+- `git branch` : branch들을 보여줌
+
+- `git branch worker1` : **worker1** 이란 이름의 branch가 만들어짐
+
+- `git checkout worker1` : 기존의 branch에서 나가서 **worker1** 이란 branch로 이동함.
+  checkout 할 때 commit을 하지 않으면 해당 branch에서 변경된 작업들이 checkout하려는 branch까지 영향을 끼치는 문제가 발생함.
+
+- `git merge worker1` : **worker1**의 commit들을 현재 작업중인 branch로 병합 (병합할 branch에서 명령어 작성)
+
+- `git branch -d worker1` : **worker1** branch를 삭제함
+
+- `git branch -b worker1` : **worker1**이란 branch를 만들고 해당 branch로 checkout함
+
+---
 
 - `git log` : 버전의 변경 이력들을 출력
 
@@ -206,70 +255,47 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
   ```
 
-git log master..name : branch 사이의 차이를 보여줌
-git diff master..name : branch 사이의 현재 차이점을 보여줌
+- `git log master..worker1` : **master** branch와 **worker1** branch 사이의 차이를 보여줌.
+- `git diff master..worker1` : **master** branch와 **worker1** branch 사이의 현재 차이점을 보여줌.
 
-git reset ID --hard : 해당 commit으로 돌아감. (복구 가능) !원격 저장소에서 reset은 절대 하면 안됨!
---hard : 강제적으로 리셋
+- git reset ID --hard : 해당 commit으로 돌아감. (복구 가능) !원격 저장소에서 reset은 절대 하면 안됨!
 
-git revert : 해당 commit으로 새로운 버전을 만들어냄
+  > `--hard` : 강제적으로 리셋
 
-git config --global core.autocrlf true : \r\n 설정 편하게 하는거.
+- `git revert` : 해당 commit으로 새로운 버전을 만들어냄
 
-git branch : branch들을 보여줌
+- `git stash` : 버전관리되고 있는 파일들의 작업 상황을 다른 공간에 숨겨줌.
 
-git branch name : name이란 이름의 branch가 만들어짐
+- `git stash list` : 숨겨놨던 작업들의 list를 보여줌. 직접 삭제하지 않는이상(reset명령어로는) 삭제 안됨.
 
-!master(병합할 branch에서 명령어 작성)
-git merge name : name의 commit들을 현재 branch로 병합
+- `git stash apply` : 가장 최근에 숨겨놨던 작업을 다시 적용시켜줌.
 
-git branch -d name : name branch를 삭제함
+- `git stash drop` : stash에 있던 작업 하나 삭제.
 
-git branch -b name : name이란 branch를 만들고 해당 branch로 checkout함
+- `git stash pop` : apply 하고 drop 함.
 
-git checkout name : 기존의 branch에서 나가서 name 이란 branch로 이동함
-checkout 할 때 commit을 하지 않으면 해당 branch에서 변경된 작업들이 checkout하려는 branch까지 영향을 끼치는 문제가 발생함.
+- `git init --bare` : 작업 불가능한 repository 생성
 
-git stash : 버전관리되고 있는 파일들의 작업 상황을 다른 공간에 숨겨줌.
+- `git fetch` : remote repository의 commit이 local repository의 commit과 다를 때 local repository의 master branch가 강제적으로 remote repository의 origin branch로 이동하지 않아서 변경 사항을 확인 가능함.
 
-git stash apply : 가장 최근에 숨겨놨던 작업을 다시 적용시켜줌.
+  > git fetch + git merge = git pull
 
-git stash drop : stash에 있던 작업 하나 삭제.
+- `git tag 1.0.0 master` : 1.0.0이라는 이름의 tag를 만들어서 master branch가 가리키는 commit을 가리킴.
 
-git stash pop : apply 하고 drop 함.
+  - tag는 commit을 해도 branch와 다르게 바뀌지 않음.
+  - git checkout 1.0.0 도 가능
 
-git stash list : 숨겨놨던 작업들의 list를 보여줌
-직접 삭제하지 않는이상(reset명령어로는) 삭제 안됨.
+- `git tag -a 1.1.0 -m "message"` : tag에 message 작성
 
-git init --bare : 작업 불가능한 repository 생성
+- `git push --tags` : tag도 (GitHub의 경우)realese로 업로드 됨. 즉, 일반적으로 push 명령어로는 tag가 안올라감.
 
-git remote add origin 저장소경로 : 원격 저장소를 현재 디렉토리에 연결. 저장소 경로를 origin이란 단어로 대체. 다른 단어도 됨.
+  - 깃헙에서 직접 tag에 대한 설명 작성 가능
 
-git remote -v : 원격 저장소 보여줌
+- `git tag -d 1.1.0` : 1.1.0 tag 삭제
+  <br>
 
-git remote remove origin : 원격 저장소 연결 삭제
-
-git push : remote repository로 commit을 동기화함.(업로드)
-
-git push -u origin master : local repository의 master branch를 origin repository의 master branch로 push하겠다.(한번만 하면 됨)
-
-git clone 주소 . : 현재 directory를 git repository로 설정하고 주소의 원격 저장소랑 연결한다.(git init 굳이 먼저 안해도됨)
-
-git pull : 연결된 원격 저장소의 파일들을 다 가져옴.
-
-git fetch : remote repository의 commit(verison)이 local repository의 commit과 다를 때 local repository의 master branch가 강제적으로 remote repository의 origin branch로 이동하지 않아서 변경 사항을 확인 가능함.
--> git fetch + git merge = git pull
-
-git tag 1.0.0 master : 1.0.0이라는 이름의 tag를 만들어서 master branch가 가리키는 commit을 가리킴.
-tag는 commit을 해도 branch와 다르게 바뀌지 않음.
-git checkout 1.0.0 도 가능
-
-git tag -a 1.1.0 -m "message" : tag에 message 작성
-
-git push --tags : tag도 realese로 업로드 됨.
-깃헙에서 직접 tag에 대한 설명 작성 가능
-
-git tag -d 1.1.0 : 1.1.0 tag 삭제
+- `git config --global core.autocrlf true` : \r\n 설정 하는거. (Windows)
+  `git config --global core.autocrlf input` (Linux, OSX)
 
 ---
 
@@ -304,13 +330,34 @@ _(사원)_
 > (작업)
 > git push
 
+<br>
+
+**작업 전에는 항상 pull 할것.**
+**작업 종료 후에는 항상 push 할것.**
+**pull 전에는 항상 commit 할것.**
+
 ---
+
+## Git-flow <a src="https://techblog.woowahan.com/2553/">by 우아한 기술 블로그</a>
+
+#### Git Repository 구성
+
+<img src="https://techblog.woowahan.com/wp-content/uploads/img/2017-10-30/github-flow_repository_structure.png">
+
+#### Git-flow 전략
+
+<img src = "https://techblog.woowahan.com/wp-content/uploads/img/2017-10-30/git-flow_overall_graph.png">
+
+<a src = "./git flow 브랜치 전략.txt">branch들을 이용한 전략</a>
 
 **커밋은 되도록 하나의 작업이 완료되면 작성**
 
-**pull, push 항상 합시다!**
-[![조코딩 Youtube](http://img.youtube.com/vi/h2MqgqDMvLI/0.jpg)](https://www.youtube.com/shorts/h2MqgqDMvLI)
+---
 
-sourcetree
+### <a src="https://www.sourcetreeapp.com/">Sourcetree</a> : Git GUI
+
+<br>
+
+[![조코딩 Youtube](http://img.youtube.com/vi/h2MqgqDMvLI/0.jpg)](https://www.youtube.com/shorts/h2MqgqDMvLI)
 
 ---
