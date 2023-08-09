@@ -332,9 +332,10 @@ _(사원)_
 
 <br>
 
-**작업 전에는 항상 pull 할것.**
-**작업 종료 후에는 항상 push 할것.**
-**pull 전에는 항상 commit 할것.**
+**작업 중인 branch 확인. `git branch`**
+**pull 전에는 commit `git commit -am "commit message"`**
+**작업 전에는 pull `git pull`**
+**작업 종료 후에는 push `git commit -am "commit message"` `git push`**
 
 ---
 
