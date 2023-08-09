@@ -304,9 +304,13 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 **(팀장)**
 
 > git init
+>
 > git add .
+>
 > git commit -m "commit message"
+>
 > git remote add origin https://github.com/SungChul-CHA/git.git
+>
 > git push -u origin main
 
 _(사원)_
