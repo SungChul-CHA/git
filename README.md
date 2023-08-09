@@ -337,6 +337,8 @@ _(사원)_
 **작업 전에는 pull `git pull`**
 **작업 종료 후에는 push `git commit -am "commit message"` `git push`**
 
+#### **커밋은 되도록 하나의 작업이 완료되면 작성**
+
 ---
 
 ## Git-flow <a src="https://techblog.woowahan.com/2553/">by 우아한 기술 블로그</a>
@@ -349,9 +351,7 @@ _(사원)_
 
 <img src = "https://techblog.woowahan.com/wp-content/uploads/img/2017-10-30/git-flow_overall_graph.png">
 
-<a src = "./git flow 브랜치 전략.txt">branch들을 이용한 전략</a>
-
-**커밋은 되도록 하나의 작업이 완료되면 작성**
+[branch들을 이용한 전략](./git%20flow%20브랜치%20전략.txt)
 
 ---
 
