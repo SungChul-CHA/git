@@ -315,13 +315,13 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
 _(사원)_
 
-> git clone https://github.com/SungChul-CHA/git.git Floder_Name
-> git checkout -b Branch_Name
-> (작업)
-> git add .
-> git commit -m "commit message"
-> git push origin Branch_Name
-> (깃헙에서)PR 작성
+> git clone https://github.com/SungChul-CHA/git.git Floder_Name <br>
+> git checkout -b Branch_Name <br>
+> (작업) <br>
+> git add . <br>
+> git commit -m "commit message" <br>
+> git push origin Branch_Name <br>
+> (깃헙에서)PR 작성 <br>
 
 **(팀장)**
 
