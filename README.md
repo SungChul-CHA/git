@@ -34,7 +34,7 @@ recursive strategy : 현재 branch에 변경사항이 적용되어 merge하려�
 
 HEAD : 가장 최근 커밋을 가리킴.
 
-##### branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
+###### branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
 
 <img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" width=650px>
 
