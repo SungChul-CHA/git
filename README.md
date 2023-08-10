@@ -34,7 +34,7 @@ recursive strategy : 현재 branch에 변경사항이 적용되어 merge하려�
 
 HEAD : 가장 최근 커밋을 가리킴.
 
-#### branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
+##### branch 충돌 : 같은 부분을 수정 후 merge하면 conflict 발생. 사용자가 직접 처리 또는 merge.tool 사용.
 
 <img src="https://git-scm.com/book/en/v2/images/basic-branching-1.png" width=650px>
 
@@ -146,14 +146,16 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
 - `git branch worker1` : **worker1** 이란 이름의 branch가 만들어짐
 
+- `git branch -d worker1` : **worker1** branch를 삭제함
+
+- `git branch -M main` : git init 했을 때 branch의 default 값은 master. 이름이 master면 기분이 나빠서 master branch의 이름을 main 으로 바꾸는 명령어
+
 - `git checkout worker1` : 기존의 branch에서 나가서 **worker1** 이란 branch로 이동함.
   checkout 할 때 commit을 하지 않으면 해당 branch에서 변경된 작업들이 checkout하려는 branch까지 영향을 끼치는 문제가 발생함.
 
-- `git merge worker1` : **worker1**의 commit들을 현재 작업중인 branch로 병합 **(병합할 branch에서 명령어 작성)**
+- `git checkout -b worker1` : **worker1**이란 branch를 만들고 해당 branch로 checkout함
 
-- `git branch -d worker1` : **worker1** branch를 삭제함
-
-- `git branch -b worker1` : **worker1**이란 branch를 만들고 해당 branch로 checkout함
+- `git merge worker1` : **worker1**의 commit들을 현재 작업중인 branch로 병합 (병합할 branch에서 명령어 작성)
 
 ---
 
@@ -303,11 +305,14 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
 **(팀장)**
 
-> git init <br>
-> git add . <br>
-> git commit -m "commit message" <br>
-> git remote add origin https://github.com/SungChul-CHA/git.git <br>
-> git push -u origin main <br>
+> git init
+> git add .
+>
+> git commit -m "commit message"
+>
+> git remote add origin https://github.com/SungChul-CHA/git.git
+>
+> git push -u origin master
 
 _(사원)_
 
@@ -321,21 +326,21 @@ _(사원)_
 
 **(팀장)**
 
-> (깃헙에서)PR 확인 후 merge <br>
-> 충돌시 <a href="#단어의-의미">merge conflict 확인</a> <br>
-> git add . <br>
-> git commit -m "commit message" <br>
-> git pull <br>
-> 충돌시 <a href="#단어의-의미">merge conflict 확인</a> <br>
-> (작업) <br>
-> git push <br>
+> (깃헙에서)PR 확인 후 merge
+> 충돌시 <a href="#단어의-의미">merge conflict 확인</a>
+> git add .
+> git commit -m "commit message"
+> git pull
+> 충돌시 <a href="#단어의-의미">merge conflict 확인</a>
+> (작업)
+> git push
 
 <br>
 
-**작업 중인 branch 확인. `git branch`**
-**pull 전에는 commit `git commit -am "commit message"`**
-**작업 전에는 pull `git pull`**
-**작업 종료 후에는 push `git commit -am "commit message"` `git push`**
+**1. 작업 중인 branch 확인. `git branch`**
+**2. pull 전에는 commit `git commit -am "commit message"`**
+**3. 작업 전에는 pull `git pull`**
+**4. 작업 종료 후에는 push `git commit -am "commit message"` `git push`**
 
 #### **커밋은 되도록 하나의 작업이 완료되면 작성**
 
