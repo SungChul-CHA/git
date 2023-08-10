@@ -149,7 +149,7 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 - `git checkout worker1` : 기존의 branch에서 나가서 **worker1** 이란 branch로 이동함.
   checkout 할 때 commit을 하지 않으면 해당 branch에서 변경된 작업들이 checkout하려는 branch까지 영향을 끼치는 문제가 발생함.
 
-- `git merge worker1` : **worker1**의 commit들을 현재 작업중인 branch로 병합 (병합할 branch에서 명령어 작성)
+- `git merge worker1` : **worker1**의 commit들을 현재 작업중인 branch로 병합 **(병합할 branch에서 명령어 작성)**
 
 - `git branch -d worker1` : **worker1** branch를 삭제함
 
