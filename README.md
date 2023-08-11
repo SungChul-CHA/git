@@ -343,7 +343,7 @@ _(사원)_
 
 ---
 
-## Git-flow <a src="https://techblog.woowahan.com/2553/">by 우아한 기술 블로그</a>
+## Git-flow [by 우아한 기술 블로그](https://techblog.woowahan.com/2553/)
 
 #### Git Repository 구성
 
