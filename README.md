@@ -305,14 +305,11 @@ _iss53_ 해결중 현재 서비스중인 **master** 에서 bug가 발생하여 �
 
 **(팀장)**
 
-> git init
-> git add .
->
-> git commit -m "commit message"
->
-> git remote add origin https://github.com/SungChul-CHA/git.git
->
-> git push -u origin master
+> git init <br>
+> git add . <br>
+> git commit -m "commit message" <br>
+> git remote add origin https://github.com/SungChul-CHA/git.git <br>
+> git push -u origin master <br>
 
 _(사원)_
 
@@ -328,7 +325,7 @@ _(사원)_
 
 > (깃헙에서)PR 확인 후 merge <br>
 > 충돌시 <a href="#단어의-의미">merge conflict 확인</a> <br>
-> (집에서 작업하던게 있으면)
+> (집에서 작업하던게 있으면) <br>
 > git commit -am "commit message" <br>
 > git pull <br>
 > 충돌시 <a href="#단어의-의미">merge conflict 확인</a> <br>
@@ -337,9 +334,9 @@ _(사원)_
 
 <br>
 
-**1. 작업 중인 branch 확인. `git branch`**
-**2. pull 전에는 commit `git commit -am "commit message"`**
-**3. 작업 전에는 pull `git pull`**
+**1. 작업 중인 branch 확인. `git branch`**<br>
+**2. pull 전에는 commit `git commit -am "commit message"`**<br>
+**3. 작업 전에는 pull `git pull`**<br>
 **4. 작업 종료 후에는 push `git commit -am "commit message"` `git push`**
 
 #### **커밋은 되도록 하나의 작업이 완료되면 작성**
