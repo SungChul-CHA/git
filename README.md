@@ -357,7 +357,7 @@ _(사원)_
 
 ---
 
-### <a src="https://www.sourcetreeapp.com/">Sourcetree</a> : Git GUI
+### [Sourcetree](https://www.sourcetreeapp.com/) : Git GUI
 
 <br>
 
