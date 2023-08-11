@@ -326,13 +326,13 @@ _(사원)_
 
 **(팀장)**
 
-> (깃헙에서)PR 확인 후 merge
-> 충돌시 <a href="#단어의-의미">merge conflict 확인</a>
-> git add .
-> git commit -m "commit message"
-> git pull
-> 충돌시 <a href="#단어의-의미">merge conflict 확인</a>
-> (작업)
+> (깃헙에서)PR 확인 후 merge <br>
+> 충돌시 <a href="#단어의-의미">merge conflict 확인</a> <br>
+> (집에서 작업하던게 있으면)
+> git commit -am "commit message" <br>
+> git pull <br>
+> 충돌시 <a href="#단어의-의미">merge conflict 확인</a> <br>
+> (작업) <br>
 > git push
 
 <br>
